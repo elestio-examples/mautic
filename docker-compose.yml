@@ -6,7 +6,7 @@ x-mautic-volumes: &mautic-volumes
   - ./mautic/media/files:/var/www/html/docroot/media/files:z
   - ./mautic/media/images:/var/www/html/docroot/media/images:z
   - ./cron:/opt/mautic/cron:z
-  - ./mautic-docroot:/var/www/html/docroot:z
+  - mautic-docroot:/var/www/html/docroot:z
 
 services:
   db:
@@ -31,7 +31,7 @@ services:
     restart: always
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./mautic-docroot:/var/www/html/docroot:z
+      - mautic-docroot:/var/www/html/docroot:z
     depends_on:
       - mautic_web
     ports:
@@ -41,14 +41,13 @@ services:
     image: mautic/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
-      - db:mysql
+      - db:db
     volumes: *mautic-volumes
-
     environment:
       - DOCKER_MAUTIC_LOAD_TEST_DATA=${DOCKER_MAUTIC_LOAD_TEST_DATA}
       - DOCKER_MAUTIC_RUN_MIGRATIONS=${DOCKER_MAUTIC_RUN_MIGRATIONS}
     env_file:
-      - .env
+      - .mautic_env
     healthcheck:
       test: cgi-fcgi -bind -connect 127.0.0.1:9000
       start_period: 5s
@@ -63,7 +62,7 @@ services:
     image: mautic/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
-      - db:mysql
+      - db:db
     volumes: *mautic-volumes
     environment:
       - DOCKER_MAUTIC_ROLE=mautic_cron
@@ -75,10 +74,18 @@ services:
     image: mautic/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
-      - db:mysql
+      - db:db
     volumes: *mautic-volumes
     environment:
       - DOCKER_MAUTIC_ROLE=mautic_worker
     depends_on:
       mautic_web:
         condition: service_healthy
+
+volumes:
+  mautic-docroot:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/mautic-docroot
+      o: bind
