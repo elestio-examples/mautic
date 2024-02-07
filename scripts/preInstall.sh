@@ -8,7 +8,7 @@ chown -R 1000:1000 ./mautic/config
 
 cat << EOT >> ./mautic/config/local.php
 <?php
-$parameters = array(
+\$parameters = array(
 	'db_driver' => 'pdo_mysql',
 	'db_host' => '${MAUTIC_DB_HOST}',
 	'db_port' => '${MAUTIC_DB_PORT}',
