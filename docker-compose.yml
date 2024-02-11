@@ -55,8 +55,8 @@ services:
       - MAUTIC_ADMIN_EMAIL=${ADMIN_EMAIL}
       - MAUTIC_ADMIN_USERNAME=admin
       - MAUTIC_ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - MAUTIC_MESSENGER_DSN_EMAIL=doctrine://default
-      - MAUTIC_MESSENGER_DSN_HIT=doctrine://default
+      # - MAUTIC_MESSENGER_DSN_EMAIL=doctrine://default
+      # - MAUTIC_MESSENGER_DSN_HIT=doctrine://default
     env_file:
       - .mautic_env
     healthcheck:
@@ -100,8 +100,8 @@ services:
       - MAUTIC_ADMIN_EMAIL=${ADMIN_EMAIL}
       - MAUTIC_ADMIN_USERNAME=admin
       - MAUTIC_ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - MAUTIC_MESSENGER_DSN_EMAIL=doctrine://default
-      - MAUTIC_MESSENGER_DSN_HIT=doctrine://default
+      # - MAUTIC_MESSENGER_DSN_EMAIL=doctrine://default
+      # - MAUTIC_MESSENGER_DSN_HIT=doctrine://default
     depends_on:
       mautic_web:
         condition: service_healthy
