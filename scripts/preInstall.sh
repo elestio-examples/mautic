@@ -8,6 +8,7 @@ chown -R 1000:1000 ./mautic/config
 
 cat << EOT >> ./mautic/config/local.php
 <?php
+\$_SERVER['HTTPS'] = 'on';
 \$parameters = array(
 	'db_driver' => 'pdo_mysql',
 	'db_host' => '${MAUTIC_DB_HOST}',
