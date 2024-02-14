@@ -87,7 +87,7 @@ Here are some example snippets to help you get started creating a container.
             - 172.17.0.1:7015:80
 
     mautic_web:
-        image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+        image: elestio4test/mautic:${SOFTWARE_VERSION_TAG}
         restart: always
         links:
             - db:db
@@ -110,7 +110,7 @@ Here are some example snippets to help you get started creating a container.
                 condition: service_healthy
 
     mautic_cron:
-        image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+        image: elestio4test/mautic:${SOFTWARE_VERSION_TAG}
         restart: always
         links:
             - db:db
@@ -122,7 +122,7 @@ Here are some example snippets to help you get started creating a container.
                 condition: service_healthy
 
     mautic_worker:
-        image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+        image: elestio4test/mautic:${SOFTWARE_VERSION_TAG}
         restart: always
         links:
             - db:db

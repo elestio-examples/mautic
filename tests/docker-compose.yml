@@ -38,7 +38,7 @@ services:
       - 172.17.0.1:7015:80
 
   mautic_web:
-    image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+    image: elestio4test/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
       - db:db
@@ -46,10 +46,15 @@ services:
     environment:
       - DOCKER_MAUTIC_LOAD_TEST_DATA=${DOCKER_MAUTIC_LOAD_TEST_DATA}
       - DOCKER_MAUTIC_RUN_MIGRATIONS=${DOCKER_MAUTIC_RUN_MIGRATIONS}
+      - MAUTIC_DB_HOST=db
+      - MAUTIC_DB_PORT=3306
+      - MAUTIC_DB_DATABASE=mautic_db
+      - MAUTIC_DB_USER=mautic_db_user
+      - MAUTIC_DB_PASSWORD=your-password
       # - MAUTIC_MESSENGER_DSN_EMAIL=doctrine://default
       # - MAUTIC_MESSENGER_DSN_HIT=doctrine://default
-    env_file:
-      - ${folderName}/.mautic_env
+    # env_file:
+    #   - ${folderName}/.mautic_env
     healthcheck:
       test: cgi-fcgi -bind -connect 127.0.0.1:9000
       start_period: 5s
@@ -61,7 +66,7 @@ services:
         condition: service_healthy
 
   mautic_cron:
-    image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+    image: elestio4test/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
       - db:db
@@ -73,7 +78,7 @@ services:
         condition: service_healthy
 
   mautic_worker:
-    image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+    image: elestio4test/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
       - db:db
@@ -93,5 +98,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/mautic-docroot
+      device: ${folderName}/mautic-docroot
       o: bind
