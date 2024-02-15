@@ -1,3 +1,5 @@
+git clone https://github.com/mautic/mautic.git docker
+mv ./docker .
 mv ./fpm/Dockerfile ./Dockerfile
 
 mkdir -p ./mautic-docroot
