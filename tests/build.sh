@@ -1,4 +1,5 @@
 git clone https://github.com/mautic/docker-mautic.git docker
+rm -f ./docker/README.md
 mv ./docker/* .
 mv ./fpm/Dockerfile ./Dockerfile
 
