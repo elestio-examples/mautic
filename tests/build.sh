@@ -1,4 +1,4 @@
-git clone https://github.com/mautic/mautic.git docker
+git clone https://github.com/mautic/docker-mautic.git docker
 mv ./docker .
 mv ./fpm/Dockerfile ./Dockerfile
 
