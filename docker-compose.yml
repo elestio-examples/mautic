@@ -38,7 +38,7 @@ services:
       - 172.17.0.1:7015:80
 
   mautic_web:
-    image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+    image: elestio/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
       - db:db
@@ -61,7 +61,7 @@ services:
         condition: service_healthy
 
   mautic_cron:
-    image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+    image: elestio/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
       - db:db
@@ -73,7 +73,7 @@ services:
         condition: service_healthy
 
   mautic_worker:
-    image: mautic/mautic:${SOFTWARE_VERSION_TAG}
+    image: elestio/mautic:${SOFTWARE_VERSION_TAG}
     restart: always
     links:
       - db:db
