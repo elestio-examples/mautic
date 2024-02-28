@@ -15,3 +15,8 @@ You can open Mautic UI here:
     URL: https://[CI_CD_DOMAIN]
     login: "admin"
     password: "[ADMIN_PASSWORD]"
+
+
+once logged-in admin settings can be seen at:
+    
+    https://[DOMAIN]/s/config/edit
