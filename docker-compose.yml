@@ -4,7 +4,7 @@ services:
     image: mautic/mautic:${SOFTWARE_VERSION_TAG}
     container_name: mautic
     ports:
-     - 172.17.0.1:9001:80
+     - 172.17.0.1:7015:80
     volumes:
      - ./mautic:/var/www/html
     environment:
