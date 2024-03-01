@@ -13,4 +13,4 @@ sed -i \
  ./mautic/app/config/local.php
 
 
-docker-compose exec -T mautic bash -c "php /var/www/html/bin/console mautic:install https://${DOMAIN} --db_driver='pdo_mysql' --db_host='mysql' --db_port='3306' --db_name='${DB_MYSQL_NAME}' --db_user='${DB_MYSQL_USER}' --db_password='${DB_MYSQL_PASSWORD}' --db_backup_tables='false' --admin_email='${EMAIL}' --admin_password='${APP_PASSWORD}' --admin_firstname='admin' --admin_lastname='admin' --admin_username='admin'"
+docker-compose exec -T mautic bash -c "php /var/www/html/bin/console mautic:install https://${DOMAIN} --db_driver='pdo_mysql' --db_host='mysql' --db_port='3306' --db_name='${DB_MYSQL_NAME}' --db_user='${DB_MYSQL_USER}' --db_password='${DB_MYSQL_PASSWORD}' --db_backup_tables='false' --admin_email='${ADMIN_EMAIL}' --admin_password='${APP_PASSWORD}' --admin_firstname='admin' --admin_lastname='admin' --admin_username='admin'"
