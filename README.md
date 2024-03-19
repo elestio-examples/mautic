@@ -18,4 +18,4 @@ You can open Mautic UI here:
 
 once logged-in admin settings can be seen at:
 
-    https://[DOMAIN]/s/config/edit
+    https://[CI_CD_DOMAIN]/s/config/edit
