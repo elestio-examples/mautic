@@ -6,6 +6,8 @@ docker-compose exec mautic   php /var/www/html/bin/console mautic:import >> /var
 
 docker-compose exec mautic   php /var/www/html/bin/console mautic:campaigns:rebuild >> /var/log/cron.pipe 2>&1
 
+docker-compose exec mautic   php /var/www/html/bin/console mautic:campaigns:update >> /var/log/cron.pipe 2>&1
+
 docker-compose exec mautic   php /var/www/html/bin/console mautic:campaigns:trigger >> /var/log/cron.pipe 2>&1
 
 docker-compose exec mautic   php /var/www/html/bin/console mautic:messages:send >> /var/log/cron.pipe 2>&1
