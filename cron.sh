@@ -1,6 +1,6 @@
 cd /opt/app/;
 
-docker-compose exec mautic   php /var/www/html/bin/console mautic:segments:update > /var/log/cron.pipe 2>&1
+docker-compose exec mautic   php /var/www/html/bin/console mautic:segments:update >> /var/log/cron.pipe 2>&1
 
 docker-compose exec mautic   php /var/www/html/bin/console mautic:import >> /var/log/cron.pipe 2>&1
 
