@@ -20,6 +20,7 @@ if [ -e "./initialized" ]; then
 else
     chmod +x ./cron.sh
     if [ -n "$PIPELINE_NAME" ]; then
+        sed -i "s~/opt/app/~/opt/app/$PIPELINE_NAME/~g" ./cron.sh
         crontab -l | { cat; echo "*/10 * * * * /opt/app/$PIPELINE_NAME/cron.sh"; } | crontab -
     else
         crontab -l | { cat; echo "*/10 * * * * /opt/app/cron.sh"; } | crontab -
