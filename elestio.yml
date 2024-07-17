@@ -24,6 +24,8 @@ environments:
     value: "mautic"
   - key: "DB_MYSQL_USER"
     value: "mautic"
+  - key: "PIPELINE_NAME"
+    value: "[PIPELINE_NAME]"
 config:
   runTime: "dockerCompose"
   version: ""

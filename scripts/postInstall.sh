@@ -14,3 +14,15 @@ sed -i \
 
 
 docker-compose exec -T mautic bash -c "php /var/www/html/bin/console mautic:install https://${DOMAIN} --db_driver='pdo_mysql' --db_host='mysql' --db_port='3306' --db_name='${DB_MYSQL_NAME}' --db_user='${DB_MYSQL_USER}' --db_password='${DB_MYSQL_PASSWORD}' --db_backup_tables='false' --admin_email='${ADMIN_EMAIL}' --admin_password='${APP_PASSWORD}' --admin_firstname='admin' --admin_lastname='admin' --admin_username='admin'"
+
+if [ -e "./initialized" ]; then
+    echo "Already initialized, skipping..."
+else
+    chmod +x ./cron.sh
+    if [ -n "$PIPELINE_NAME" ]; then
+        crontab -l | { cat; echo "*/10 * * * * /opt/app/$PIPELINE_NAME/cron.sh"; } | crontab -
+    else
+        crontab -l | { cat; echo "*/10 * * * * /opt/app/cron.sh"; } | crontab -
+    fi
+        touch "./initialized"
+fi
