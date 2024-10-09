@@ -11,7 +11,7 @@ environments:
   - key: "SOFTWARE_VERSION_TAG"
     value: "v4"
   - key: "DB_MYSQL_VERSION"
-    value: "8.1"
+    value: "8.0"
   - key: "ADMIN_EMAIL"
     value: "[EMAIL]"
   - key: "APP_PASSWORD"
